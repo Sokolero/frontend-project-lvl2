@@ -11,7 +11,6 @@ const program = new Command();
 // 5. Отсортировать
 
 function readFile(filepath) {
-  console.log(path.resolve(cwd(), filepath))
   const resolvedPath = path.resolve(cwd(), filepath);
   const dataString = readFileSync(resolvedPath, 'utf-8');
   return dataString;
@@ -24,6 +23,8 @@ function union(arr1, arr2) {
 }
 
 export default function gendiff() {
+  let diffResult = null;
+
   program
     .name('gendiff')
     .description('CLI to compares two configuration files and shows a difference.')
@@ -52,8 +53,10 @@ export default function gendiff() {
         }
         return `    ${key}: ${data1[key]}\n`;
       });
-      console.log(`{\n${diffList.join('')}}`);
+      diffResult = `{\n${diffList.join('')}}`;
+      console.log(diffResult)
     })
 
   program.parse();
+  return diffResult;
 }
