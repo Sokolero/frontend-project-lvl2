@@ -2,4 +2,4 @@
 
 import gendiff from '../index.js';
 
-gendiff();
+console.log(gendiff());

@@ -6,4 +6,9 @@ publish:
 	npm link
 
 lint:
-	npx eslint --fix src/ bin/
+	npx eslint --fix bin/ index.js
+
+test:
+	npm test
+
+.PHONY: test

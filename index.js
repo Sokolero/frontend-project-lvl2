@@ -2,13 +2,9 @@ import { Command } from 'commander';
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { cwd } from 'node:process';
+
 const program = new Command();
 
-// 1. Получить пути файлов из commander аргументов +
-// 2. прочитать последовательно первый и второй файл библиотекой fs +
-// 3. Спарсить в объекты JSON строки из файлов +
-// 4. Сравнить ключи-значения первого файла и второго. После сравнения сформировать строку диффа и добавить ее в список
-// 5. Отсортировать
 
 function readFile(filepath) {
   const resolvedPath = path.resolve(cwd(), filepath);
@@ -17,12 +13,10 @@ function readFile(filepath) {
 }
 
 function union(arr1, arr2) {
-  return arr1.concat(arr2.filter((item) => {
-    return arr1.indexOf(item) < 0
-  }));
+  return arr1.concat(arr2.filter((item) => arr1.indexOf(item) < 0));
 }
 
-export default function gendiff() {
+export default function genDiff() {
   let diffResult = null;
 
   program
@@ -41,7 +35,6 @@ export default function gendiff() {
       const uniqKeys = union(keys1, keys2).sort(); // get concated with uniqs keys
 
       const diffList = uniqKeys.map((key) => {
-
         if (!data2[key]) {
           return `  - ${key}: ${data1[key]}\n`;
         }
@@ -54,8 +47,7 @@ export default function gendiff() {
         return `    ${key}: ${data1[key]}\n`;
       });
       diffResult = `{\n${diffList.join('')}}`;
-      console.log(diffResult)
-    })
+    });
 
   program.parse();
   return diffResult;
