@@ -8,7 +8,7 @@
     "gendiff": "bin/gendiff.js"
   },
   "scripts": {
-    "test": "npx jest"
+    "test": "NODE_OPTIONS=--experimental-vm-modules npx jest --watch"
   },
   "repository": {
     "type": "git",
@@ -22,6 +22,7 @@
   "homepage": "https://github.com/Sokolero/frontend-project-lvl2#readme",
   "dependencies": {
     "commander": "^9.2.0",
+    "js-yaml": "^4.1.0",
     "lodash": "^4.17.21",
     "lodash-es": "^4.17.21"
   },
