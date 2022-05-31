@@ -8,22 +8,22 @@ const getValue = (value) => {
   return value;
 }
 
-
-
-
 export default function plainFormat(diff, parentPath='') {
   // вернуть список строк на каждую ноду и лист
   const getStringFromNode = (node, parentPath) => {
+
     if (node.type === 'tale') {
+      const {fromFirst, fromSecond} = node.values;
       const fullPath = `'${parentPath}${node.keyName}'`;
-      if (node.values[0] === undefined) {
-        return `Property ${fullPath} was added with value: ${getValue(node.values[1])}\n`
+
+      if (fromFirst === undefined) {
+        return `Property ${fullPath} was added with value: ${getValue(fromSecond)}\n`
       }
-      if (node.values[1] === undefined) {
+      if (fromSecond === undefined) {
         return `Property ${fullPath} was removed\n`;
       }
-      if (node.values[0] !== node.values[1]) {
-        return `Property ${fullPath} was updated. From ${getValue(node.values[0])} to ${getValue(node.values[1])}\n`
+      if (fromFirst !== fromSecond) {
+        return `Property ${fullPath} was updated. From ${getValue(fromFirst)} to ${getValue(fromSecond)}\n`
       }
       return '';
     }

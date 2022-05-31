@@ -23,7 +23,7 @@ beforeEach(() => {
 })
 
 // ========================================
-describe('tests for json format', () => {
+describe('valid json format diff', () => {
   beforeEach(() => {
     filepath1 = getFixturePath('file1.json');
     filepath2 = getFixturePath('file2.json');
@@ -34,14 +34,14 @@ describe('tests for json format', () => {
     filepath2 = null;
   })
 
-  test('valid diff of the nested json files, output format - stylish', () => {
+  test('testing main function', () => {
     // console.log(genDiff(filepath1, filepath2))
     expect(genDiff(filepath1, filepath2)).toBe(expectedString);
   })
 });
 
 // ========================================
-describe('tests for yaml format', () => {
+describe('valid yaml format diff', () => {
 
   beforeEach(() => {
     filepath1 = getFixturePath('file1.yml');
@@ -53,14 +53,14 @@ describe('tests for yaml format', () => {
     filepath2 = null;
   })
 
-  test('valid diff of the nested json files, output format - stylish', () => {
+  test('testing main function', () => {
     // console.log(genDiff(filepath1, filepath2))
     expect(genDiff(filepath1, filepath2)).toBe(expectedString);
   })
 })
 
 // ========================================
-describe('tests for plain format output', () => {
+describe('valid plain output', () => {
 
   beforeEach(() => {
     filepath1 = getFixturePath('file1.json');
@@ -76,8 +76,31 @@ describe('tests for plain format output', () => {
     expectedString = null;
   })
 
-  test('valid diff of the nested json files, output format - plain', () => {
+  test('testing main function', () => {
     // console.log(genDiff(filepath1, filepath2))
     expect(genDiff(filepath1, filepath2, 'plain')).toBe(expectedString);
+  })
+})
+
+
+describe('valid json output', () => {
+
+  beforeEach(() => {
+    filepath1 = getFixturePath('file1.json');
+    filepath2 = getFixturePath('file2.yml');
+    expectedPath = getFixturePath('expected.json');
+    expectedString = readFileSync(expectedPath, 'utf-8');
+  });
+
+  afterEach(() => {
+    filepath1 = null;
+    filepath2 = null;
+    expectedPath = null;
+    expectedString = null;
+  })
+
+  test('testing main function', () => {
+    console.log(genDiff(filepath1, filepath2, 'json'))
+    expect(genDiff(filepath1, filepath2, 'json')).toBe(expectedString);
   })
 })

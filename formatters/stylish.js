@@ -23,16 +23,16 @@ function stylishFormat(diff, depth=1) {
 
   // линии на ненодовых значениях
   const getLines = (node) => {
-    const value1 = node.values[0];
-    const value2 = node.values[1];
-    if (value1 === value2) {
-      return `\n${getIndent(node.depth, ' ')}${node.keyName}:${getString(value1, node.depth)}`
+    const {fromFirst, fromSecond} = node.values;
+
+    if (fromFirst === fromSecond) {
+      return `\n${getIndent(node.depth, ' ')}${node.keyName}:${getString(fromFirst, node.depth)}`
     } else {
-      const line1 = node.values[0] !== undefined
-        ? `\n${getIndent(node.depth, '-')}${node.keyName}:${getString(node.values[0], node.depth)}`
+      const line1 = fromFirst !== undefined
+        ? `\n${getIndent(node.depth, '-')}${node.keyName}:${getString(fromFirst, node.depth)}`
         : '';
-      const line2 = node.values[1] !== undefined
-        ?  `\n${getIndent(node.depth, '+')}${node.keyName}:${getString(node.values[1], node.depth)}`
+      const line2 = fromSecond !== undefined
+        ?  `\n${getIndent(node.depth, '+')}${node.keyName}:${getString(fromSecond, node.depth)}`
         : '';
 
       return [line1, line2].join('')

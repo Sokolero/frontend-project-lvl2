@@ -14,8 +14,16 @@ export default function createDiff(obj1, obj2, depth=1) {
     }
     return 'tale';
   }
+  //
+  // const getValue = (value) => value;
 
-  const getValue = (value) => value;
+  const getValues = (fromFirst, fromSecond) => {
+    return {
+      fromFirst,
+      fromSecond
+    };
+  }
+
 
   const keys1 = Object.keys(obj1); // [[key, value], [key, value], ...]
   const keys2 = Object.keys(obj2);
@@ -24,7 +32,7 @@ export default function createDiff(obj1, obj2, depth=1) {
   const diff = uniqKeys.map((key) => {
     const type = getType(key);
     const values = type === 'tale'
-      ? [getValue(obj1[key]), getValue(obj2[key])]
+      ? getValues(obj1[key], obj2[key]) // {fromFirst: 'sfs', fromSecond: null}
       : null;
     const children = type === 'node' ? createDiff(obj1[key], obj2[key], depth + 1) : null;
     // console.log({
@@ -36,7 +44,7 @@ export default function createDiff(obj1, obj2, depth=1) {
     return {
       keyName: key,
       type,
-      values,
+      values, // {fromFirst, fromSecond}
       children,
       depth
     }

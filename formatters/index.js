@@ -1,5 +1,6 @@
-import stylish from './stylish';
-import plain from './plain';
+import stylish from './stylish.js';
+import plain from './plain.js';
+import json from './json-formatter.js';
 
 const getFormater = (formatName) => {
   switch (formatName) {
@@ -10,6 +11,10 @@ const getFormater = (formatName) => {
     case 'plain':
       return {
         format: (diff) => plain(diff)
+      }
+    case 'json':
+      return {
+        format: (diff) => json(diff)
       }
     default:
       return (diff) => stylish(diff);
