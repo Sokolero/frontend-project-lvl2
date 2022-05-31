@@ -1,0 +1,183 @@
+[
+  {
+    "keyName": "common",
+    "type": "node",
+    "values": null,
+    "children": [
+      {
+        "keyName": "follow",
+        "type": "tale",
+        "values": {
+          "fromSecond": false
+        },
+        "children": null,
+        "depth": 2
+      },
+      {
+        "keyName": "setting1",
+        "type": "tale",
+        "values": {
+          "fromFirst": "Value 1",
+          "fromSecond": "Value 1"
+        },
+        "children": null,
+        "depth": 2
+      },
+      {
+        "keyName": "setting2",
+        "type": "tale",
+        "values": {
+          "fromFirst": 200
+        },
+        "children": null,
+        "depth": 2
+      },
+      {
+        "keyName": "setting3",
+        "type": "tale",
+        "values": {
+          "fromFirst": true,
+          "fromSecond": null
+        },
+        "children": null,
+        "depth": 2
+      },
+      {
+        "keyName": "setting4",
+        "type": "tale",
+        "values": {
+          "fromSecond": "blah blah"
+        },
+        "children": null,
+        "depth": 2
+      },
+      {
+        "keyName": "setting5",
+        "type": "tale",
+        "values": {
+          "fromSecond": {
+            "key5": "value5"
+          }
+        },
+        "children": null,
+        "depth": 2
+      },
+      {
+        "keyName": "setting6",
+        "type": "node",
+        "values": null,
+        "children": [
+          {
+            "keyName": "doge",
+            "type": "node",
+            "values": null,
+            "children": [
+              {
+                "keyName": "wow",
+                "type": "tale",
+                "values": {
+                  "fromFirst": "",
+                  "fromSecond": "so much"
+                },
+                "children": null,
+                "depth": 4
+              }
+            ],
+            "depth": 3
+          },
+          {
+            "keyName": "key",
+            "type": "tale",
+            "values": {
+              "fromFirst": "value",
+              "fromSecond": "value"
+            },
+            "children": null,
+            "depth": 3
+          },
+          {
+            "keyName": "ops",
+            "type": "tale",
+            "values": {
+              "fromSecond": "vops"
+            },
+            "children": null,
+            "depth": 3
+          }
+        ],
+        "depth": 2
+      }
+    ],
+    "depth": 1
+  },
+  {
+    "keyName": "group1",
+    "type": "node",
+    "values": null,
+    "children": [
+      {
+        "keyName": "baz",
+        "type": "tale",
+        "values": {
+          "fromFirst": "bas",
+          "fromSecond": "bars"
+        },
+        "children": null,
+        "depth": 2
+      },
+      {
+        "keyName": "foo",
+        "type": "tale",
+        "values": {
+          "fromFirst": "bar",
+          "fromSecond": "bar"
+        },
+        "children": null,
+        "depth": 2
+      },
+      {
+        "keyName": "nest",
+        "type": "tale",
+        "values": {
+          "fromFirst": {
+            "key": "value"
+          },
+          "fromSecond": "str"
+        },
+        "children": null,
+        "depth": 2
+      }
+    ],
+    "depth": 1
+  },
+  {
+    "keyName": "group2",
+    "type": "tale",
+    "values": {
+      "fromFirst": {
+        "abc": 12345,
+        "deep": {
+          "id": 45
+        }
+      }
+    },
+    "children": null,
+    "depth": 1
+  },
+  {
+    "keyName": "group3",
+    "type": "tale",
+    "values": {
+      "fromSecond": {
+        "deep": {
+          "id": {
+            "number": 45
+          }
+        },
+        "fee": 100500
+      }
+    },
+    "children": null,
+    "depth": 1
+  }
+]
