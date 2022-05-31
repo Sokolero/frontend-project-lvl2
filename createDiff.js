@@ -1,11 +1,10 @@
-
 // get array of unique keys depth 1
 const unionUniq = (arr1, arr2) => arr1.concat(arr2.filter((item) => arr1.indexOf(item) < 0));
 
 const isObject = (value) => typeof value === 'object' && !Array.isArray(value);
 
 // ====== main function =========================
-export default function createDiff(obj1, obj2, depth=1) {
+export default function createDiff(obj1, obj2, depth = 1) {
   // получаем список уникальных ключей для двух объектов
   // если на входе получены объекты, а не массив или значения
   const getType = (key) => {
@@ -13,17 +12,14 @@ export default function createDiff(obj1, obj2, depth=1) {
       return 'node';
     }
     return 'tale';
-  }
+  };
   //
   // const getValue = (value) => value;
 
-  const getValues = (fromFirst, fromSecond) => {
-    return {
-      fromFirst,
-      fromSecond
-    };
-  }
-
+  const getValues = (fromFirst, fromSecond) => ({
+    fromFirst,
+    fromSecond,
+  });
 
   const keys1 = Object.keys(obj1); // [[key, value], [key, value], ...]
   const keys2 = Object.keys(obj2);
@@ -46,8 +42,8 @@ export default function createDiff(obj1, obj2, depth=1) {
       type,
       values, // {fromFirst, fromSecond}
       children,
-      depth
-    }
+      depth,
+    };
   });
 
   return diff;

@@ -9,9 +9,7 @@ const stringify = (value, depth) => {
   if (value !== null && typeof value === 'object') {
     return `{\n${Object.keys(value)
       .filter(((key) => value[key] !== undefined))
-      .flatMap((key) => {
-        return `${getIndent(depth + 1)}"${key}": ${stringify(value[key], depth + 1)}`
-      }).join(',\n')}\n${getIndent(depth)}}`
+      .flatMap((key) => `${getIndent(depth + 1)}"${key}": ${stringify(value[key], depth + 1)}`).join(',\n')}\n${getIndent(depth)}}`;
   }
 
   if (typeof value === 'string') {
@@ -19,27 +17,22 @@ const stringify = (value, depth) => {
   }
 
   return `${value}`;
-}
-
+};
 
 // ===============================
-function getFormatedNodes(nodes, depth=0) {
+function getFormatedNodes(nodes, depth = 0) {
+  const getFormatedNode = (node, depth) => `${getIndent(depth)}{\n${
+    Object.keys(node).flatMap((key) => {
+      if (key === 'children' && node[key] !== null) {
+        return `${getIndent(depth + 1)}"children": ${getFormatedNodes(node.children, depth + 1)}`;
+      }
+      return `${getIndent(depth + 1)}"${key}": ${stringify(node[key], depth + 1)}`;
+    }).join(',\n')
+  }\n${getIndent(depth)}}`;
 
-  const getFormatedNode = (node, depth) => {
-    return `${getIndent(depth)}{\n${
-      Object.keys(node).flatMap((key) => {
-        if (key === 'children' && node[key] !== null) {
-          return `${getIndent(depth + 1)}"children": ${getFormatedNodes(node.children, depth + 1)}`
-        } else {
-          return `${getIndent(depth + 1)}"${key}": ${stringify(node[key], depth + 1)}`
-        }
-      }).join(',\n')
-    }\n${getIndent(depth)}}`
-  }
-
-  return `[\n${nodes.flatMap((node) => getFormatedNode(node, depth + 1)).join(',\n')}\n${getIndent(depth)}]`
+  return `[\n${nodes.flatMap((node) => getFormatedNode(node, depth + 1)).join(',\n')}\n${getIndent(depth)}]`;
 }
 
 export default function (nodes) {
-  return getFormatedNodes(nodes) + '\n';
+  return `${getFormatedNodes(nodes)}\n`;
 }

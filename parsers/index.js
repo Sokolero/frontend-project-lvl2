@@ -12,17 +12,17 @@ function readFile(filepath) {
 
 // -------------------
 function getParser(filepath) {
-  const extname = path.extname(filepath)
+  const extname = path.extname(filepath);
   switch (extname) {
     case '.json':
       return {
-        parse: (data) => JSON.parse(data)
-      }
+        parse: (data) => JSON.parse(data),
+      };
     case '.yml':
     case '.yaml':
       return {
-        parse: (data) => yaml.load(data)
-      }
+        parse: (data) => yaml.load(data),
+      };
     default:
       throw new Error(`Unexpected file format: ${extname}`);
   }
@@ -36,6 +36,6 @@ export default (filepath) => {
   // get needed parser
   const parser = getParser(filepath);
 
-  //get js Object
+  // get js Object
   return parser.parse(dataString);
-}
+};

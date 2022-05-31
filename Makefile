@@ -6,7 +6,7 @@ publish:
 	npm link
 
 lint:
-	npx eslint --fix bin/ index.js
+	npx eslint --fix bin/ . index.js
 
 test:
 	npm test
