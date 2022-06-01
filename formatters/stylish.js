@@ -15,7 +15,8 @@ const getString = (value, depth) => {
     return ` {${strings}\n${getIndent(depth)}}`;
   }
 
-  return value !== '' ? ` ${value}` : value;
+  // return value !== '' ? ` ${value}` : value;
+  return ` ${value}`;
 };
 
 // префикс переде ключом есть всегда
