@@ -51,5 +51,5 @@ function stylishFormat(diff, depth = 1) {
 }
 
 export default function stylish(diff) {
-  return `${stylishFormat(diff)}\n`;
+  return `${stylishFormat(diff)}`;
 }

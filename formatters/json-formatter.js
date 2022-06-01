@@ -34,5 +34,5 @@ function getFormatedNodes(nodes, nodeDepth = 0) {
 }
 
 export default function jsonFormat(nodes) {
-  return `${getFormatedNodes(nodes)}\n`;
+  return `${getFormatedNodes(nodes)}`;
 }
