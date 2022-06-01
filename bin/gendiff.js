@@ -1,11 +1,8 @@
 #!/usr/bin/env node
-import process from 'node:process';
 import { Command } from 'commander';
 import gendiff from '../index.js';
 
 const program = new Command();
-
-const getFormatName = (opts) => opts.format;
 
 program
   .name('gendiff')

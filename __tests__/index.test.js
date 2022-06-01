@@ -1,10 +1,9 @@
-// import { jest } from '@jest/globals';
+/* eslint-disable */
 import { fileURLToPath } from 'url';
 import path, { dirname } from 'path';
 import { readFileSync } from 'node:fs';
 import genDiff from '../index.js';
-import parse from '../parsers';
-import createDiff from '../createDiff';
+
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -98,3 +97,4 @@ describe('valid json output', () => {
     expect(genDiff(filepath1, filepath2, 'json')).toBe(expectedString);
   });
 });
+/* eslint-enable */

@@ -8,7 +8,7 @@ const getValue = (value) => {
   return value;
 };
 
-export default function plainFormat(diff, parentPath = '') {
+export default function plainFormat(diff, path = '') {
   // вернуть список строк на каждую ноду и лист
   const getStringFromNode = (node, parentPath) => {
     if (node.type === 'tale') {
@@ -27,12 +27,10 @@ export default function plainFormat(diff, parentPath = '') {
       return '';
     }
 
-    if (node.type === 'node') {
-      return plainFormat(node.children, `${parentPath}${node.keyName}.`);
-    }
+    return plainFormat(node.children, `${parentPath}${node.keyName}.`);
   };
 
-  const diffList = diff.flatMap((node) => `${getStringFromNode(node, parentPath)}`);
+  const diffList = diff.flatMap((node) => `${getStringFromNode(node, path)}`);
 
   return diffList.join('');
 }

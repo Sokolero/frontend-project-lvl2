@@ -20,7 +20,7 @@ const stringify = (value, depth) => {
 };
 
 // ===============================
-function getFormatedNodes(nodes, depth = 0) {
+function getFormatedNodes(nodes, nodeDepth = 0) {
   const getFormatedNode = (node, depth) => `${getIndent(depth)}{\n${
     Object.keys(node).flatMap((key) => {
       if (key === 'children' && node[key] !== null) {
@@ -30,9 +30,9 @@ function getFormatedNodes(nodes, depth = 0) {
     }).join(',\n')
   }\n${getIndent(depth)}}`;
 
-  return `[\n${nodes.flatMap((node) => getFormatedNode(node, depth + 1)).join(',\n')}\n${getIndent(depth)}]`;
+  return `[\n${nodes.flatMap((node) => getFormatedNode(node, nodeDepth + 1)).join(',\n')}\n${getIndent(nodeDepth)}]`;
 }
 
-export default function (nodes) {
+export default function jsonFormat(nodes) {
   return `${getFormatedNodes(nodes)}\n`;
 }
