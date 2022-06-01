@@ -95,7 +95,6 @@ describe('valid json output', () => {
   });
 
   test('testing main function', () => {
-    console.log(genDiff(filepath1, filepath2, 'json'));
     expect(genDiff(filepath1, filepath2, 'json')).toBe(expectedString);
   });
 });
