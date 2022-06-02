@@ -35,7 +35,7 @@ export default function plainFormat(diff, path = '') {
     .filter((node) => node !== '')
     .map((node) => `\n${node}`)
     .join('')
-    .trim()
+    .trim();
 
-  return diffList
+  return diffList;
 }

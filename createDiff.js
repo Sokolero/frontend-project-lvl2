@@ -1,3 +1,5 @@
+import * as _ from 'lodash-es';
+
 // get array of unique keys depth 1
 const unionUniq = (arr1, arr2) => arr1.concat(arr2.filter((item) => arr1.indexOf(item) < 0));
 
@@ -23,9 +25,10 @@ export default function createDiff(obj1, obj2, depth = 1) {
 
   const keys1 = Object.keys(obj1); // [[key, value], [key, value], ...]
   const keys2 = Object.keys(obj2);
-  const uniqKeys = unionUniq(keys1, keys2).sort();
+  const sortedUniqKeys = _.sortBy(unionUniq(keys1, keys2), [function (item) { return item; }]);
+  console.log(sortedUniqKeys);
 
-  const diff = uniqKeys.map((key) => {
+  const diff = sortedUniqKeys.map((key) => {
     const type = getType(key);
     const values = type === 'tale'
       ? getValues(obj1[key], obj2[key]) // {fromFirst: 'sfs', fromSecond: null}
