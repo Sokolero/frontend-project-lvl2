@@ -25,7 +25,7 @@ export default function createDiff(obj1, obj2, depth = 1) {
 
   const keys1 = Object.keys(obj1); // [[key, value], [key, value], ...]
   const keys2 = Object.keys(obj2);
-  const sortedUniqKeys = _.sortBy(unionUniq(keys1, keys2), [function (item) { return item; }]);
+  const sortedUniqKeys = _.sortBy(unionUniq(keys1, keys2), [(item) => item]);
 
   const diff = sortedUniqKeys.map((key) => {
     const type = getType(key);
