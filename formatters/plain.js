@@ -16,13 +16,13 @@ export default function plainFormat(diff, path = '') {
       const fullPath = `'${parentPath}${node.keyName}'`;
 
       if (fromFirst === undefined) {
-        return `Property ${fullPath} was added with value: ${getValue(fromSecond)}\n`;
+        return `Property ${fullPath} was added with value: ${getValue(fromSecond)}`;
       }
       if (fromSecond === undefined) {
-        return `Property ${fullPath} was removed\n`;
+        return `Property ${fullPath} was removed`;
       }
       if (fromFirst !== fromSecond) {
-        return `Property ${fullPath} was updated. From ${getValue(fromFirst)} to ${getValue(fromSecond)}\n`;
+        return `Property ${fullPath} was updated. From ${getValue(fromFirst)} to ${getValue(fromSecond)}`;
       }
       return '';
     }
@@ -30,7 +30,12 @@ export default function plainFormat(diff, path = '') {
     return plainFormat(node.children, `${parentPath}${node.keyName}.`);
   };
 
-  const diffList = diff.flatMap((node) => `${getStringFromNode(node, path)}`);
+  const diffList = diff
+    .flatMap((node) => `${getStringFromNode(node, path)}`)
+    .filter((node) => node !== '')
+    .map((node) => `\n${node}`)
+    .join('')
+    .trim()
 
-  return diffList.join('');
+  return diffList
 }

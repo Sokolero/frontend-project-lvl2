@@ -17,7 +17,7 @@ let expectedPath = null;
 
 beforeEach(() => {
   expectedPath = getFixturePath('expected.txt');
-  expectedString = readFileSync(expectedPath, 'utf-8');
+  expectedString = readFileSync(expectedPath, 'utf-8').trim();
 });
 
 // ========================================
@@ -62,7 +62,7 @@ describe('valid plain output', () => {
     filepath1 = getFixturePath('file1.json');
     filepath2 = getFixturePath('file2.json');
     expectedPath = getFixturePath('expectedPlain.txt');
-    expectedString = readFileSync(expectedPath, 'utf-8');
+    expectedString = readFileSync(expectedPath, 'utf-8').trim();
   });
 
   afterEach(() => {
@@ -83,7 +83,7 @@ describe('valid json output', () => {
     filepath1 = getFixturePath('file1.json');
     filepath2 = getFixturePath('file2.yml');
     expectedPath = getFixturePath('expected.json');
-    expectedString = readFileSync(expectedPath, 'utf-8');
+    expectedString = readFileSync(expectedPath, 'utf-8').trim();
   });
 
   afterEach(() => {
