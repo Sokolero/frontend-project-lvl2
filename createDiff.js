@@ -26,7 +26,6 @@ export default function createDiff(obj1, obj2, depth = 1) {
   const keys1 = Object.keys(obj1); // [[key, value], [key, value], ...]
   const keys2 = Object.keys(obj2);
   const sortedUniqKeys = _.sortBy(unionUniq(keys1, keys2), [function (item) { return item; }]);
-  console.log(sortedUniqKeys);
 
   const diff = sortedUniqKeys.map((key) => {
     const type = getType(key);
@@ -34,12 +33,6 @@ export default function createDiff(obj1, obj2, depth = 1) {
       ? getValues(obj1[key], obj2[key]) // {fromFirst: 'sfs', fromSecond: null}
       : null;
     const children = type === 'node' ? createDiff(obj1[key], obj2[key], depth + 1) : null;
-    // console.log({
-    //   keyName: key,
-    //   type,
-    //   values,
-    //   children
-    // })
     return {
       keyName: key,
       type,
